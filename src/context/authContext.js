@@ -3,6 +3,7 @@ import React from 'react'
 const defaultValue = {
     setLoggedToken: null,
     loggedToken: null,
+    clusters: [],
 };
 
 const AuthContext = React.createContext(defaultValue);

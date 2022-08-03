@@ -8,10 +8,15 @@ const UserMenu = ({ open, close, anchorEl }) => {
     const navigate = useNavigate();
     const { setLoggedToken } = useContext(AuthContext);
 
-    const logOut = () => {
+    const logOut = (route) => {
         deleteCookie('token');
         setLoggedToken(false);
         navigate('/login', { replace: true });
+    }
+
+    const navigateTo = (route) => () => {
+        close();
+        navigate('/'+route);
     }
 
   return (
@@ -20,8 +25,8 @@ const UserMenu = ({ open, close, anchorEl }) => {
     transformOrigin={{vertical: 'top',horizontal: 'right',}}
     anchorEl={anchorEl} open={open} onClose={close} MenuListProps={{ 'aria-labelledby': 'basic-button', }}
     >
-        <MenuItem onClick={close}>Profile</MenuItem>
-        <MenuItem onClick={close}>My Orders</MenuItem>
+        <MenuItem onClick={navigateTo('profile')}>Profile</MenuItem>
+        <MenuItem onClick={navigateTo('orders')}>My Orders</MenuItem>
         <MenuItem onClick={logOut}>Logout</MenuItem>
     </Menu>
   )

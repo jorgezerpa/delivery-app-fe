@@ -4,6 +4,7 @@ const defaultValue = {
     setLoggedToken: null,
     loggedToken: null,
     clusters: [],
+    myOrders: [],
 };
 
 const AuthContext = React.createContext(defaultValue);

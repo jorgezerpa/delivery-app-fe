@@ -61,3 +61,13 @@ export async function makeReservation(cluster_id){
     }
 }
 
+export async function UnreserveOrder(order_id){
+    try {
+        const token = getCookie('token');
+        const result = await axios.patch(`${BASE}clusters/unreserve-mine/${order_id}`,{}, { headers:{ 'authorization': `Bearer ${token}` } })
+        return result;
+    } catch (error) {
+        console.log('error', error)
+    }
+}
+

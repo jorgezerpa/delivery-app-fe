@@ -13,30 +13,26 @@ const EmptyOrders = () => (
 
 const Profile = () => {
     const [user, setUser] = useState({});
-    const [orders, setOrders] = useState([]);
 
     useEffect(()=>{
         (async()=>{
             try {
                 const data = await getUserInfo();
-                const userOrders = await getUserOrders();
                 setUser(data.data.result);
-                setOrders(userOrders.data.result);
             } catch (error) {
                 console.log(error)
             }
         })()
     }, [])
     
-
-    console.log(orders)
-
   return (
-    <Box>
-        <Typography variant='h2'>{ user.name }</Typography>
-        <Typography variant='body1'>{ user.user_name }</Typography>
-        <Typography variant='body1'>{ user.email }</Typography>
-        { orders.length > 0 ? <Orders /> : <EmptyOrders /> }
+    <Box sx={{ padding: '1rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Box sx={{ width: '200px', padding: '20px', textAlign: 'center' }}>
+            <Box sx={{ width: '150px', height: '150px', background: '#ccc', borderRadius: '50%' }}></Box>
+            <Typography variant='h4'>{ user.name }</Typography>
+            <Typography variant='h6'>{ user.user_name }</Typography>
+            <Typography variant='body1'>{ user.email }</Typography>
+        </Box>
     </Box>
   )
 }

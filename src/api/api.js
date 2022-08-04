@@ -33,22 +33,31 @@ export async function signUp({ name, email, user_name, password }){
 }
 
 
-export function getUserInfo(){
+export async function getUserInfo(){
     try {
-        const result = axios.get(`${BASE}users/my-user`, { headers:{ 'authorization': `Bearer ${getCookie('token')}` } })
+        const result = await axios.get(`${BASE}users/my-user`, { headers:{ 'authorization': `Bearer ${getCookie('token')}` } })
         return result;
     } catch (error) {
         console.log('error', error)
     }
 }
 
-export function getUserOrders(){
+export async function getUserOrders(){
     try {
-        const result = axios.get(`${BASE}orders/my-orders`, { headers:{ 'authorization': `Bearer ${getCookie('token')}` } })
+        const result = await axios.get(`${BASE}orders/my-orders`, { headers:{ 'authorization': `Bearer ${getCookie('token')}` } })
         return result;
     } catch (error) {
         console.log('error', error)
     }
 }
 
+export async function makeReservation(cluster_id){
+    try {
+        const token = getCookie('token');
+        const result = await axios.patch(`${BASE}clusters/reserve/${cluster_id}`,{}, { headers:{ 'authorization': `Bearer ${token}` } })
+        return result;
+    } catch (error) {
+        console.log('error', error)
+    }
+}
 

@@ -27,9 +27,9 @@ const OrdersList = () => {
     <Table sx={{ minWidth: 250, maxWidth: 600, margin: '0 auto' }} aria-label="simple table">
       <TableHead>
         <TableRow>
-          <TableCell>Order ID</TableCell>
-          <TableCell align="right">User</TableCell>
-          <TableCell align="right">Cluster</TableCell>
+          <TableCell sx={{ fontWeight:'bold' }}>Order ID</TableCell>
+          <TableCell sx={{ fontWeight:'bold' }} align="right">User</TableCell>
+          <TableCell sx={{ fontWeight:'bold' }} align="right">Cluster</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -43,7 +43,7 @@ const OrdersList = () => {
             </TableCell>
             <TableCell align="right">{ clusters.filter(cluster=>cluster.id===row.cluster_id)[0].cluster }</TableCell>
             <TableCell align="right">{
-                <Button onClick={handleClick(row.id)} variant='contained' size='small' sx={{fontWeight:'bold'}}>unreserve</Button>
+                <Button onClick={handleClick(row.id)} variant='outlined' size='small' sx={{ fontWeight:'bold'}}>unreserve</Button>
             }</TableCell>
           </TableRow>
         ))}

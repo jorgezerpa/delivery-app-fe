@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import {  Container, Box } from '@mui/material';
+import {  Container, Box, Typography } from '@mui/material';
 import ClusterCard from '../components/ClusterCard';
 import AuthContext from '../context/authContext';
 import ReserveModal from '../components/ReserveModal';
@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <Container>
-      <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', mt: '30px' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', mt: '30px', gap: '20px' }}>
         {clusters.map((cluster, index)=>(
               <ClusterCard key={ cluster.cluster+'home'+Math.random() } cluster={cluster} setOpenModal={setOpenModal} setModalInfo={setModalInfo} />
         ))}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 import UserMenu from './UserMenu';
 import userIcon from '../assets/icons/userIcon.svg';
+import logo from '../assets/icons/logo.svg';
 
 const Navbar = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -19,8 +20,8 @@ const Navbar = () => {
   return (
     <AppBar sx={{ position: 'relative' }}>
         <Toolbar >
-            <Box sx={{ flex:1 }}>
-                <Typography component={Link} to='/' sx={{ color: '#fff', textDecoration: 'none' }} >LOGO</Typography>
+            <Box sx={{ flex:1 }} component={Link} to='/'>
+                <img src={logo} alt='' />
             </Box>
             <Box>
                 <Box 

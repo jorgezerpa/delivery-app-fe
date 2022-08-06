@@ -44,7 +44,7 @@ const Login = () => {
         </Typography> }
         
         <TextField onChange={onChange} inputRef={email} fullWidth sx={{ marginBottom: '10px' }} label='email' />
-        <TextField onChange={onChange} inputRef={password} fullWidth sx={{ marginBottom: '10px' }} label='password' />
+        <TextField onChange={onChange} type="password" inputRef={password} fullWidth sx={{ marginBottom: '10px' }} label='password' />
         <Box sx={{ display: 'flex', justifyContent: 'center', mt: '20px' }}>
             <Button onClick={onClick} variant='contained' size='large' sx={{ margin: '0 auto' }} >Login</Button>
         </Box>

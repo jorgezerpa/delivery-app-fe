@@ -9,8 +9,8 @@ import { getCookie } from './utils/cookiesHandler';
 import AuthContext from './context/authContext';
 
 import io from 'socket.io-client';
-const socket = io('http://localhost:3001');
-
+const socket = io(process.env.REACT_APP_API_BASE);
+console.log(process.env.REACT_APP_API_BASE);
 function App() {
   const [loggedToken, setLoggedToken] = useState(getCookie('token'))
         //sockets
@@ -32,7 +32,7 @@ function App() {
       setClusters(clusters)
     });
     socket.on('UnreserveEvent', (orders) => {
-      setMyOrders(orders)
+      setMyOrders(orders);
     });
 
     return () => {

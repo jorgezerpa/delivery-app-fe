@@ -5,7 +5,7 @@ import { getCookie } from '../utils/cookiesHandler';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-const BASE = 'http://localhost:3001/api/v1/'; 
+const BASE = process.env.REACT_APP_API_BASE + 'api/v1/'; 
 
 export async function login({email, password}){
     try {

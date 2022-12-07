@@ -7,39 +7,41 @@ import Orders from './pages/Orders';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { getCookie } from './utils/cookiesHandler';
 import AuthContext from './context/authContext';
-
 import io from 'socket.io-client';
+
 const socket = io(process.env.REACT_APP_API_BASE);
-console.log(process.env.REACT_APP_API_BASE);
+
 function App() {
   const [loggedToken, setLoggedToken] = useState(getCookie('token'))
-        //sockets
+  
+    //sockets
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [clusters, setClusters ] = useState([]); //clusters data
   const [myOrders, setMyOrders ] = useState([]); // my Orders
 
   useEffect(() => {
-    socket.on('connect', () => {
-      setIsConnected(true);
-      console.log('connected')
-    });
-
-    socket.on('disconnect', () => {
-      setIsConnected(false);
-    });
-    
-    socket.on('clustersEvent', (clusters) => {
-      setClusters(clusters)
-    });
-    socket.on('UnreserveEvent', (orders) => {
-      setMyOrders(orders);
-    });
-
-    return () => {
-      socket.off('connect');
-      socket.off('disconnect');
-      socket.off('pong');
-    };
+      socket.on('connect', () => {
+        setIsConnected(true);
+        console.log('connected')
+      });
+  
+      socket.on('disconnect', () => {
+        setIsConnected(false);
+      });
+      
+      socket.on('clustersEvent', (clusters) => {
+        console.log(clusters)
+        setClusters(clusters)
+      });
+      socket.on('UnreserveEvent', (orders) => {
+        setMyOrders(orders);
+      });
+  
+      return () => {
+        socket.off('connect');
+        socket.off('disconnect');
+        socket.off('pong');
+      };
   }, []);
 
   return (

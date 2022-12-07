@@ -18,7 +18,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   
   useEffect(()=>{
-    if(clusters.length >= 1) setLoading(false);
+    if(clusters.length >= 0) setLoading(false);
 }, [clusters])
 
   return (

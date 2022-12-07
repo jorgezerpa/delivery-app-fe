@@ -26,9 +26,7 @@ const Home = () => {
         { loading && <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }} ><LoadingAnimation /></Box> }
         { !loading && <>
           <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', mt: '30px', gap: '20px' }}>
-            {clusters.map((cluster, index)=>(
-                  <ClusterCard key={ cluster.cluster+'home'+Math.random() } cluster={cluster} setOpenModal={setOpenModal} setModalInfo={setModalInfo} />
-            ))}
+            {clusters.map((cluster)=>(<ClusterCard key={ cluster.id+'home' } cluster={cluster} setOpenModal={setOpenModal} setModalInfo={setModalInfo} />))}
           </Box>
           <ReserveModal open={openModal} setOpenModal={setOpenModal} modalInfo={modalInfo} />
         </> }
